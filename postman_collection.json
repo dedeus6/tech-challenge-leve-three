@@ -1,0 +1,802 @@
+{
+	"info": {
+		"_postman_id": "34c39f75-49c2-4786-82c2-b34bfefe3209",
+		"name": "POS - Software Architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12054026",
+		"_collection_link": "https://speeding-meadow-899513.postman.co/workspace/My-Workspace~6244138c-77ae-4b04-83fb-0b22617d54e7/collection/12054026-34c39f75-49c2-4786-82c2-b34bfefe3209?action=share&source=collection_link&creator=12054026"
+	},
+	"item": [
+		{
+			"name": "Tech Challenge",
+			"item": [
+				{
+					"name": "Produto",
+					"item": [
+						{
+							"name": "Criar produto",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\": \"Sanduíche 1\",\n    \"vlrUnitario\": 10.34,\n    \"categoriaId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar produtos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto",
+										"list"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar produto",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\": \"Sanduíche 3\",\n    \"vlrUnitario\": 14.50,\n    \"categoriaId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto/:idProduto",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto",
+										":idProduto"
+									],
+									"variable": [
+										{
+											"key": "idProduto",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta produto",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto/:idProduto",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto",
+										":idProduto"
+									],
+									"variable": [
+										{
+											"key": "idProduto",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca produto por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto/:idProduto",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto",
+										":idProduto"
+									],
+									"variable": [
+										{
+											"key": "idProduto",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca produtos por categoria",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto/categoria/:idCategoria?limit=1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto",
+										"categoria",
+										":idCategoria"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									],
+									"variable": [
+										{
+											"key": "idCategoria",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cliente",
+					"item": [
+						{
+							"name": "Cadastra cliente",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"string\",\n    \"cpf\": \"string\",\n    \"telefone\": \"string\",\n    \"email\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/cliente",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cliente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar clientes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/cliente/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cliente",
+										"list"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar cliente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"string\",\n    \"telefone\": \"string\",\n    \"email\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto/:idCliente",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto",
+										":idCliente"
+									],
+									"variable": [
+										{
+											"key": "idCliente",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deleta cliente",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/produto/:idCliente",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"produto",
+										":idCliente"
+									],
+									"variable": [
+										{
+											"key": "idCliente",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca cliente por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/cliente/:idCliente",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cliente",
+										":idCliente"
+									],
+									"variable": [
+										{
+											"key": "idCliente",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Empresa",
+					"item": [
+						{
+							"name": "Criar empresa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nomeFantasia\": \"Empresa X\",\n    \"cnpj\": \"12345678901234\",\n    \"razaoSocial\": \"Empresa X Ltda.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/empresa",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"empresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza empresa",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nomeFantasia\": \"Empresa X\",\n    \"cnpj\": \"12345678901234\",\n    \"razaoSocial\": \"Empresa X Ltda.\",\n    \"ativo\": \"S\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/empresa/:idEmpresa",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"empresa",
+										":idEmpresa"
+									],
+									"variable": [
+										{
+											"key": "idEmpresa",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca empresa por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/empresa/:idEmpresa",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"empresa",
+										":idEmpresa"
+									],
+									"variable": [
+										{
+											"key": "idEmpresa",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar empresas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/empresa/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"empresa",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categoria",
+					"item": [
+						{
+							"name": "Cadastra categoria",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\": \"Sobremesa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categoria",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualiza categoria",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descricao\": \"Bebida\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categoria/:idCategoria",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categoria",
+										":idCategoria"
+									],
+									"variable": [
+										{
+											"key": "idCategoria",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca categoria por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categoria/2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categoria",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista categorias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categoria/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categoria",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar categoria",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/categoria/:idCategoria",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"categoria",
+										":idCategoria"
+									],
+									"variable": [
+										{
+											"key": "idCategoria",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pedido",
+					"item": [
+						{
+							"name": "Cadastrar pedido",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"empresaId\": \"1\",\n    \"itens\": [\n        {\n            \"produtoId\": 1,\n            \"qtdProduto\": 2,\n            \"vlrUnitario\": 10.74\n        },\n        {\n            \"produtoId\": 2,\n            \"qtdProduto\": 1,\n            \"vlrUnitario\": 3.67\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/pedido",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"pedido"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Anda com status do pedido",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"empresaId\": \"1\",\n    \"itens\": [\n        {\n            \"produtoId\": 1,\n            \"qtdProduto\": 2,\n            \"vlrUnitario\": 10.74\n        },\n        {\n            \"produtoId\": 2,\n            \"qtdProduto\": 1,\n            \"vlrUnitario\": 3.67\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/pedido/status/:idPedido",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"pedido",
+										"status",
+										":idPedido"
+									],
+									"variable": [
+										{
+											"key": "idPedido",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca pedido por id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/pedido/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"pedido",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pagamento do pedido",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pedidoId\": 1,\n    \"formaPagamentoId\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/pedido/pagamento/solicitar",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"pedido",
+										"pagamento",
+										"solicitar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar pedidos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/pedido/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"pedido",
+										"list"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Notificação de pagamento",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"date_created\": \"2025-01-15T02:35:58.396-04:00\",\n    \"data\": {\n        \"id\": \"fe5fd504-7fed-41f8-a2f0-dc98a2b3e1a1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/pedido/pagamento/webhook",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"pedido",
+										"pagamento",
+										"webhook"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Forma de pagamento",
+					"item": [
+						{
+							"name": "Listar formas de pagamentos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/forma-pagamento/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forma-pagamento",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

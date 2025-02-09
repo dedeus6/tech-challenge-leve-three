@@ -1,0 +1,21 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: fast-food
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5443/fast-food}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+  flyway:
+    enabled: true
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5443/fast-food}
+    user: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    locations: classpath:db/migration
+
+mercado-pago:
+  secret-token: ${MERCADO_PAGO_SECRET_TOKEN:12345}
+  user-id: ${MERCADO_PAGO_USER_ID:12345}
+  external-pos-id: ${MERCADO_PAGO_EXTERNAL_POS_ID:FASTFOOD001}
