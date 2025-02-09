@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Secret file ###
-app-secret.yml
+k8s/app-secret.yml
