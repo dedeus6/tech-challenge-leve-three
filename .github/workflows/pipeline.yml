@@ -6,8 +6,8 @@ on:
       - master
 
 env:
-  AWS_REGION: us-east-1
-  ECR_REPOSITORY: 172074481079.dkr.ecr.us-east-1.amazonaws.com/fast-food-ecr-repository
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
   IMAGE_TAG: latest
 
 jobs:
@@ -21,8 +21,8 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ASIASQEDQGW3XF7ASUCT
-        aws-secret-access-key: J8R7es55L875g4WVEMnTqrKRefJipomJChiILUpL
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Login to Amazon ECR
