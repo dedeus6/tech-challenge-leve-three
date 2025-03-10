@@ -1,5 +1,6 @@
 package br.com.fiap.app.exception.handler;
 
+import br.com.fiap.app.exception.BadRequestException;
 import br.com.fiap.app.exception.BusinessException;
 import br.com.fiap.app.exception.ForbiddenException;
 import br.com.fiap.webui.dtos.response.ErrorField;
@@ -26,44 +27,22 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleApiException(WebRequest request, Exception ex) {
-        log.error("Error", ex);
-        String message = ex.getMessage();
-        String uri = request.getDescription(false);
-        return new ResponseEntity<>(ErrorResponse.builder()
-                .path(uri != null ? uri.substring(4) : null)
-                .message(message)
-                .timestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")))
-                .httpCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                .httpDescription(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
-                .build(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return handleException(request, HttpStatus.INTERNAL_SERVER_ERROR, ex);
     }
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> handleApiException(WebRequest request, BusinessException ex) {
-        log.error("Error", ex);
-        String message = ex.getMessage();
-        String uri = request.getDescription(false);
-        return new ResponseEntity<>(ErrorResponse.builder()
-                .path(uri != null ? uri.substring(4) : null)
-                .message(message)
-                .timestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")))
-                .httpCode(ex.getStatus().value())
-                .httpDescription(ex.getStatus().getReasonPhrase())
-                .build(), ex.getStatus());
+        return handleException(request, ex.getStatus(), ex);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> badRequestException(WebRequest request, BadRequestException ex) {
+        return handleException(request, ex.getStatus(), ex);
     }
 
     @ExceptionHandler(ForbiddenException.class)
     public ResponseEntity<ErrorResponse> ForbiddenException(WebRequest request, ForbiddenException ex) {
-        log.error("Error", ex);
-        String message = ex.getMessage();
-        String uri = request.getDescription(false);
-        return new ResponseEntity<>(ErrorResponse.builder()
-                .path(uri != null ? uri.substring(4) : null)
-                .message(message)
-                .timestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")))
-                .httpCode(ex.getStatus().value())
-                .httpDescription(ex.getStatus().getReasonPhrase())
-                .build(), ex.getStatus());
+        return handleException(request, ex.getStatus(), ex);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -112,5 +91,18 @@ public class ExceptionAdvice {
                 .httpDescription(HttpStatus.BAD_GATEWAY.getReasonPhrase())
                 .fields(!errorList.isEmpty() ? errorList : null)
                 .build(), HttpStatus.BAD_REQUEST);
+    }
+
+    private ResponseEntity<ErrorResponse> handleException(WebRequest request, HttpStatus httpStatus, Exception ex) {
+        log.error("Error", ex);
+        String message = ex.getMessage();
+        String uri = request.getDescription(false);
+        return new ResponseEntity<>(ErrorResponse.builder()
+                .path(uri != null ? uri.substring(4) : null)
+                .message(message)
+                .timestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")))
+                .httpCode(httpStatus.value())
+                .httpDescription(httpStatus.getReasonPhrase())
+                .build(), httpStatus);
     }
 }
