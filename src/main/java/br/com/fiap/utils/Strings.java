@@ -59,4 +59,8 @@ public class Strings {
         }
         return true;
     }
+
+    public static boolean startsWith(String text, String prefix) {
+        return text != null && prefix != null ? text.toLowerCase().startsWith(prefix.toLowerCase()) : false;
+    }
 }

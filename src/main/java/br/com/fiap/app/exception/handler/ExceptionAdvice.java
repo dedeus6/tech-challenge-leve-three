@@ -1,6 +1,7 @@
 package br.com.fiap.app.exception.handler;
 
 import br.com.fiap.app.exception.BusinessException;
+import br.com.fiap.app.exception.ForbiddenException;
 import br.com.fiap.webui.dtos.response.ErrorField;
 import br.com.fiap.webui.dtos.response.ErrorResponse;
 import jakarta.validation.ConstraintViolationException;
@@ -39,6 +40,20 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> handleApiException(WebRequest request, BusinessException ex) {
+        log.error("Error", ex);
+        String message = ex.getMessage();
+        String uri = request.getDescription(false);
+        return new ResponseEntity<>(ErrorResponse.builder()
+                .path(uri != null ? uri.substring(4) : null)
+                .message(message)
+                .timestamp(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")))
+                .httpCode(ex.getStatus().value())
+                .httpDescription(ex.getStatus().getReasonPhrase())
+                .build(), ex.getStatus());
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<ErrorResponse> ForbiddenException(WebRequest request, ForbiddenException ex) {
         log.error("Error", ex);
         String message = ex.getMessage();
         String uri = request.getDescription(false);
