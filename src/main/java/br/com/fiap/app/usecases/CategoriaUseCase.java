@@ -30,7 +30,6 @@ public class CategoriaUseCase {
         var entityResponse = categoriaRepository.save(entity);
 
         return categoriaMapper.toCategoriaResponse(entityResponse);
-
     }
 
     public CategoriaResponse atualizaCategoria(Long id, CategoriaDTO categoria) {
