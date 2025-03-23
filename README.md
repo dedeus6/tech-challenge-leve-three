@@ -21,7 +21,7 @@ A solução proposta ao estabelecimento é um sistema simples e de auto-atendime
   - `spring-boot-starter-web`: Para construir aplicações web.
   - `spring-boot-starter-data-jpa`: Para integração com JPA (Java Persistence API).
   - `spring-boot-starter-validation`: Para validação de dados.
-- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional, selecionado pois entendemos que a estrutura dos dados foram bem definidas em outras fases e por isso não precisamos de toda flexibilidade de um banco NoSQL. 
+- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional, selecionado pois entendemos que a estrutura dos dados foi bem definida em outra fase e por isso não precisamos de toda flexibilidade de um banco NoSQL. 
 - **Lombok**: Biblioteca para reduzir o código boilerplate.
 - **MapStruct e ModelMapper**: Para mapeamento de objetos.
 - **Flyway**: Para gerenciamento de migrações de banco de dados.
